@@ -10,6 +10,10 @@ public enum Permission{
     ;
     String action;
 
+    public String getAction() {
+        return action;
+    }
+
     Permission(String action) {
         this.action = action;
     }

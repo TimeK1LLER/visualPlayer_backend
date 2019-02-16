@@ -1,6 +1,7 @@
 package com.visualplayer.dev.user.bean;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.visualplayer.dev.user.bean.role.RoleMapping;
 import com.visualplayer.dev.user.bean.role.UserRole;
 import lombok.Data;
 
@@ -14,7 +15,7 @@ public class User {
     @GeneratedValue
     Long uid;
 
-    @Column
+    @Column(unique = true)
     String username;
 
     // 盐后密码
@@ -22,11 +23,11 @@ public class User {
     @JsonIgnore
     String password;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     @JsonIgnore
     UserInfo userInfo;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     UserRole userRole;
 
 }
